@@ -21,7 +21,7 @@ const timeline = [
 export function AboutSection() {
   const missionImage = PlaceHolderImages.find(img => img.id === 'mission-image');
   return (
-    <div className="container mx-auto max-w-5xl px-4 py-12 md:py-20">
+    <div className="container mx-auto px-4 py-12 md:py-20">
       <header className="text-center">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
           About Jarvis

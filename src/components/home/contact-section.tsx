@@ -30,7 +30,7 @@ const faqItems = [
 
 export function ContactSection() {
   return (
-    <div className="container mx-auto max-w-6xl px-4 py-12 md:py-20">
+    <div className="container mx-auto px-4 py-12 md:py-20">
       {/* Header */}
       <header className="text-center">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">

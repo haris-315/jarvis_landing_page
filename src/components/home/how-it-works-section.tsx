@@ -63,7 +63,7 @@ export function HowItWorksSection() {
   return (
     <section id="how-it-works" className="w-full py-16 md:py-28 lg:py-32 bg-background">
       <div className="container px-4 md:px-6">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
+        <div className="mx-auto mb-16 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
             Get Started in Minutes
           </h2>

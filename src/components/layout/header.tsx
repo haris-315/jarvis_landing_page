@@ -18,9 +18,10 @@ export function Header() {
   // track scroll
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 10); // Adjusted threshold for better transparency detection
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Ensure the initial state is set correctly
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -49,31 +50,31 @@ export function Header() {
           : 'bg-transparent border-transparent'
       )}
     >
-      <div className="container flex h-16 max-w-screen-2xl items-center">
-        <div className="mr-4 flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+      <div className="container flex h-16 items-center px-4">
+        <div className="flex-1 flex justify-start">
+          <Link href="/" className="flex items-center space-x-2">
             <BrainCircuit className="h-6 w-6 text-primary" />
             <span className="font-bold">Jarvis</span>
           </Link>
-          <nav className="hidden gap-6 md:flex">
-            {navLinks.map((link: NavLink) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className={cn(
-                  'text-sm font-medium transition-colors hover:text-primary',
-                  (pathname === link.href || (pathname === '/' && link.href.startsWith('/#')))
-                    ? 'text-primary'
-                    : 'text-muted-foreground'
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
         </div>
-        <div className="flex flex-1 items-center justify-end">
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((link: NavLink) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={(e) => handleLinkClick(e, link.href)}
+              className={cn(
+                'text-sm font-medium transition-colors hover:text-primary',
+                (pathname === link.href || (pathname === '/' && link.href.startsWith('/#')))
+                  ? 'text-primary'
+                  : 'text-muted-foreground'
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="flex-1 flex justify-end items-center gap-2">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button
@@ -131,7 +132,7 @@ export function Header() {
               </div>
             </SheetContent>
           </Sheet>
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center">
             <Button asChild className="group">
               <Link href="/ai-demo">
                 Try The AI

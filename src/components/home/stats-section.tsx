@@ -33,7 +33,7 @@ export function StatsSection() {
       className="w-full py-16 md:py-28 lg:py-32 bg-gradient-to-b from-background to-muted/30"
     >
       <div className="container px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
             Trusted by Professionals Worldwide
           </h2>
