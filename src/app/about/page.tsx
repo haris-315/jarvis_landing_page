@@ -1,8 +1,7 @@
-import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+import { Card, CardContent } from '@/components/ui/card';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const teamMembers = [
   { name: 'John Doe', role: 'CEO & Founder', imageId: 'team-member-1' },
@@ -14,9 +13,9 @@ const teamMembers = [
 const techStack = ['OpenAI', 'Assembly AI', 'Flutter', 'Next.js', 'Firebase', 'Tailwind CSS'];
 
 const timeline = [
-    { year: '2023', event: 'Launch of AI Assistant v1 with email summarization.' },
-    { year: '2024', event: 'Introduced AI Chat and enhanced Outlook integration.' },
-    { year: '2025', event: 'Launched V2 with meeting assistance and transcription services.' },
+  { year: '2023', event: 'Launch of AI Assistant v1 with email summarization.' },
+  { year: '2024', event: 'Introduced AI Chat and enhanced Outlook integration.' },
+  { year: '2025', event: 'Launched V2 with meeting assistance and transcription services.' },
 ];
 
 export default function AboutPage() {
@@ -59,7 +58,7 @@ export default function AboutPage() {
           })}
         </div>
       </section>
-      
+
       <section className="mt-16 grid gap-12 lg:grid-cols-2">
         <div>
           <h2 className="text-center text-3xl font-bold tracking-tight mb-8">Our Journey</h2>

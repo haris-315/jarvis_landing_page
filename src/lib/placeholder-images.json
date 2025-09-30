@@ -45,7 +45,7 @@
     {
       "id": "mission-image",
       "description": "An abstract image representing the company's mission.",
-      "imageUrl": "https://images.unsplash.com/photo-1598452174358-a7607a1c841a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMHRlY2h8ZW58MHx8fHwxNzU5MjA5NzgyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/goal.jpeg",
       "imageHint": "abstract tech"
     },
     {

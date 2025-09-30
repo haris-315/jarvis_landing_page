@@ -1,8 +1,5 @@
-import { AiSummarySection } from '@/components/home/ai-summary-section';
 import { VoiceAssistant } from '@/components/ai-demo/voice-assistant';
 import { Breadcrumbs } from '@/components/ui/breadcrumbs';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Mail, Mic } from 'lucide-react';
 
 export default function AiDemoPage() {
   return (
@@ -17,24 +14,7 @@ export default function AiDemoPage() {
         </p>
       </header>
       <div className="mt-12">
-        <Tabs defaultValue="voice-assistant" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="voice-assistant">
-              <Mic className="mr-2" />
-              Voice Assistant
-            </TabsTrigger>
-            <TabsTrigger value="email-summary">
-              <Mail className="mr-2" />
-              Email Summarization
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="voice-assistant">
-            <VoiceAssistant />
-          </TabsContent>
-          <TabsContent value="email-summary">
-            <AiSummarySection />
-          </TabsContent>
-        </Tabs>
+        <VoiceAssistant />
       </div>
     </div>
   );

@@ -70,7 +70,7 @@ export function Header() {
                 <div className="flex items-center justify-between border-b px-6 py-4">
                   <Link href="/" className="flex items-center space-x-2" onClick={() => setIsSheetOpen(false)}>
                     <BrainCircuit className="h-6 w-6 text-primary" />
-                    <span className="font-bold">AI Assistant</span>
+                    <span className="font-bold">Jarvis</span>
                   </Link>
                   <Button
                     variant="ghost"

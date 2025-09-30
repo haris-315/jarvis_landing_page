@@ -8,6 +8,6 @@ export const navLinks: NavLink[] = [
   { href: '/ai-demo', label: 'AI Demo' },
   { href: '/#about', label: 'About Us' },
   { href: '/#contact', label: 'Contact Us' },
-  { href: '/privacy', label: 'Privacy Policy' },
-  { href: '/terms', 'label': 'Terms & Conditions' },
+  // { href: '/privacy', label: 'Privacy Policy' },
+  // { href: '/terms', 'label': 'Terms & Conditions' },
 ];
