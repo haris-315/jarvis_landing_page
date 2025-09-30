@@ -13,6 +13,16 @@ import { cn } from '@/lib/utils';
 export function Header() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
+  // track scroll
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('/#')) {
@@ -31,7 +41,14 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header
+      className={cn(
+        'sticky top-0 z-50 w-full transition-colors duration-300',
+        isScrolled
+          ? 'border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'
+          : 'bg-transparent border-transparent'
+      )}
+    >
       <div className="container flex h-16 max-w-screen-2xl items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
@@ -46,7 +63,9 @@ export function Header() {
                 onClick={(e) => handleLinkClick(e, link.href)}
                 className={cn(
                   'text-sm font-medium transition-colors hover:text-primary',
-                  (pathname === link.href || (pathname === '/' && link.href.startsWith('/#'))) ? 'text-primary' : 'text-muted-foreground'
+                  (pathname === link.href || (pathname === '/' && link.href.startsWith('/#')))
+                    ? 'text-primary'
+                    : 'text-muted-foreground'
                 )}
               >
                 {link.label}
@@ -68,7 +87,11 @@ export function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-0">
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between border-b px-6 py-4">
-                  <Link href="/" className="flex items-center space-x-2" onClick={() => setIsSheetOpen(false)}>
+                  <Link
+                    href="/"
+                    className="flex items-center space-x-2"
+                    onClick={() => setIsSheetOpen(false)}
+                  >
                     <BrainCircuit className="h-6 w-6 text-primary" />
                     <span className="font-bold">Jarvis</span>
                   </Link>
@@ -88,7 +111,9 @@ export function Header() {
                       onClick={(e) => handleLinkClick(e, link.href)}
                       className={cn(
                         'rounded-md px-4 py-3 text-lg font-medium transition-colors hover:bg-accent hover:text-primary',
-                        (pathname === link.href || (pathname === '/' && link.href.startsWith('/#'))) ? 'bg-accent text-primary' : 'text-foreground'
+                        (pathname === link.href || (pathname === '/' && link.href.startsWith('/#')))
+                          ? 'bg-accent text-primary'
+                          : 'text-foreground'
                       )}
                     >
                       {link.label}
