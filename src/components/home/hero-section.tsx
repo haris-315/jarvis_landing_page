@@ -34,11 +34,11 @@ export function HeroSection() {
             From project management and real-time web access to voice chats, take full control of your tasks.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 justify-center lg:justify-start">
-            <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-blue-500 hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
+            {/* <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-blue-500 hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
               <Link href="/ai-demo">
                 Try The AI <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
-            </Button>
+            </Button> */}
             <Button size="lg" asChild variant="outline" className="group border-primary/20 hover:bg-primary/10 transition-all duration-300">
               <Link href="#features">
                 Explore Features <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
