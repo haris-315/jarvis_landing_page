@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight, BrainCircuit, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -99,13 +99,19 @@ export function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-0">
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between border-b px-6 py-4">
-                  <Link
-                    href="/"
-                    className="flex items-center space-x-2"
-                    onClick={() => setIsSheetOpen(false)}
-                  >
-                    <BrainCircuit className="h-6 w-6 text-primary" />
-                    <span className="font-bold">Jarvis</span>
+                  <Link href="/" className="flex items-center space-x-2">
+                    <div className="w-12 h-12 mt-[5px] mb-[8px] bg-white rounded-full overflow-hidden flex items-center justify-center">
+                      <Image
+                        src="/icon.png"
+                        alt="Jarvis Icon"
+                        width={140}
+                        height={140}
+                        className="object-cover"
+                      />
+                    </div>
+
+
+
                   </Link>
                   <Button
                     variant="ghost"
@@ -132,25 +138,11 @@ export function Header() {
                     </Link>
                   ))}
                 </nav>
-                <div className="mt-auto border-t p-4">
-                  <Button asChild className="w-full group">
-                    <Link href="/ai-demo">
-                      Try The AI
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </div>
+
               </div>
             </SheetContent>
           </Sheet>
-          <div className="hidden md:flex items-center">
-            <Button asChild className="group">
-              <Link href="/ai-demo">
-                Try The AI
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </div>
+
         </div>
       </div>
     </header>
