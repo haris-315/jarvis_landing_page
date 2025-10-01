@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { BrainCircuit, Linkedin, Twitter } from 'lucide-react';
-import { navLinks } from '@/lib/links';
 import { Button } from '@/components/ui/button';
-
+import { navLinks } from '@/lib/links';
+import { Linkedin, Twitter } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 export function Footer() {
   return (
     <footer className="bg-accent text-accent-foreground">
@@ -10,8 +10,18 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
-              <BrainCircuit className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-white">AI Assistant</span>
+              <div className="w-17 h-17 mt-[5px] mb-[8px] bg-white rounded-full overflow-hidden flex items-center justify-center">
+                <Image
+                  src="/icon.png"
+                  alt="Jarvis Icon"
+                  width={140}
+                  height={140}
+                  className="object-cover"
+                />
+              </div>
+
+
+
             </Link>
             <p className="mt-4 text-sm text-gray-300">
               Empowering businesses with AI for smarter workflows.
@@ -37,7 +47,7 @@ export function Footer() {
               <div>
                 <h3 className="font-semibold text-white">Legal</h3>
                 <ul className="mt-4 space-y-2">
-                   <li>
+                  <li>
                     <Link href="/privacy" className="text-sm text-gray-300 hover:text-white">
                       Privacy Policy
                     </Link>

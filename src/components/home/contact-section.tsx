@@ -21,11 +21,11 @@ const faqItems = [
     answer:
       'Currently, we use a fine-tuned version of GPT-4 Turbo for the best performance. We are working on features to allow more customization and integration with other models in the future.',
   },
-  {
-    question: "What happens when I'm offline?",
-    answer:
-      'Our app is designed with offline functionality in mind. Thanks to local Hive storage, you can access previously synced emails, summaries, and chat history even without an internet connection.',
-  },
+  // {
+  //   question: "What happens when I'm offline?",
+  //   answer:
+  //     'Our app is designed with offline functionality in mind. Thanks to local Hive storage, you can access previously synced emails, summaries, and chat history even without an internet connection.',
+  // },
 ];
 
 export function ContactSection() {

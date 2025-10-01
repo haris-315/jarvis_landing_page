@@ -9,17 +9,11 @@ export function HeroSection() {
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-background to-blue-900/20 py-20">
-      {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Animated gradient orbs */}
         <div className="absolute -top-1/2 left-1/2 w-[800px] h-[800px] bg-gradient-to-b from-primary/20 to-transparent rounded-full blur-3xl transform -translate-x-1/2 animate-pulse" />
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-b from-blue-500/20 to-transparent rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-b from-primary/30 to-transparent rounded-full blur-3xl animate-float" />
-
-        {/* Animated grid pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000,transparent)]" />
-
-        {/* Main gradient overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background opacity-80" />
       </div>
 
@@ -52,32 +46,29 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <div className="relative h-[700px] flex items-center justify-center">
+        <div className="relative h-[500px] lg:h-[700px] flex items-center justify-center">
           {heroImages.map((image, index) => {
-            // Position and transform calculations
             const transforms = [
-              'translate(-75%, 5%) rotate(-15deg)', // left phone
-              'translate(0%, 0%)', // center phone
-              'translate(75%, 5%) rotate(15deg)', // right phone
+              'lg:translate-x-[-75%] lg:translate-y-[5%] lg:rotate-[-15deg] sm:translate-x-[-25%] sm:translate-y-[5%] sm:rotate-[-8deg]', // left phone
+              'lg:translate-x-[0%] lg:translate-y-[0%] sm:translate-x-[25%] sm:translate-y-[0%]', // center phone
+              'lg:translate-x-[75%] lg:translate-y-[5%] lg:rotate-[15deg] sm:translate-x-[75%] sm:translate-y-[5%] sm:rotate-[8deg]', // right phone
             ];
             const zIndexes = ['z-10', 'z-30', 'z-10'];
             const opacities = ['opacity-60', 'opacity-100', 'opacity-60'];
             const animations = [
-              'animate-float-slow', // left phone
-              'animate-float', // center phone
-              'animate-float-slower', // right phone
+              'animate-float-slow',
+              'animate-float',
+              'animate-float-slower',
             ];
 
             return (
               <div
                 key={image.id}
-                className={`absolute w-[320px] h-[640px] ${zIndexes[index]} ${opacities[index]} ${animations[index]} transition-all duration-700 ease-out`}
+                className={`absolute w-[280px] h-[560px] sm:w-[320px] sm:h-[640px] ${zIndexes[index]} ${opacities[index]} ${animations[index]} transition-all duration-700 ease-out transform ${transforms[index]}`}
                 style={{
-                  transform: transforms[index],
                   animationDelay: `${index * 250}ms`
                 }}
               >
-                {/* Image container */}
                 <div className="absolute inset-0">
                   <Image
                     src={image.imageUrl}
@@ -87,7 +78,6 @@ export function HeroSection() {
                     className="object-cover"
                     data-ai-hint={image.imageHint}
                   />
-                  {/* Simple overlay for contrast */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                 </div>
               </div>

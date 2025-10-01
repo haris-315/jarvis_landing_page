@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowRight, BrainCircuit, Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
@@ -53,8 +54,18 @@ export function Header() {
       <div className="container flex h-16 items-center px-4">
         <div className="flex-1 flex justify-start">
           <Link href="/" className="flex items-center space-x-2">
-            <BrainCircuit className="h-6 w-6 text-primary" />
-            <span className="font-bold">Jarvis</span>
+            <div className="w-12 h-12 mt-[5px] mb-[8px] bg-white rounded-full overflow-hidden flex items-center justify-center">
+              <Image
+                src="/icon.png"
+                alt="Jarvis Icon"
+                width={140}
+                height={140}
+                className="object-cover"
+              />
+            </div>
+
+
+
           </Link>
         </div>
         <nav className="hidden md:flex items-center gap-6">

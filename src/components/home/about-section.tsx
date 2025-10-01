@@ -10,7 +10,7 @@ const teamMembers = [
   { name: 'Lisa Ray', role: 'Product Designer', imageId: 'team-member-4' },
 ];
 
-const techStack = ['OpenAI', 'Assembly AI', 'Flutter', 'Next.js', 'Firebase', 'Tailwind CSS'];
+const techStack = ['ChatGPT', 'Assembly AI', 'Agentic AI', 'Generative AI', 'Langchain', 'Langgraph', "Google's TTS", "Outlook"];
 
 const timeline = [
   { year: '2023', event: 'Launch of AI Assistant v1 with email summarization.' },
@@ -50,27 +50,51 @@ export function AboutSection() {
           </div>
         )}
       </section>
-
       <section className="mt-16">
-        <h3 className="text-center text-3xl font-bold tracking-tight">Meet the Team</h3>
+        <h3 className="text-center text-3xl font-bold tracking-tight text-white">
+          Meet the Team
+        </h3>
         <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {teamMembers.map((member) => {
-            const image = PlaceHolderImages.find(img => img.id === member.imageId);
+            const image = PlaceHolderImages.find(
+              (img) => img.id === member.imageId
+            );
             return (
-              <Card key={member.name} className="text-center">
+              <Card
+                key={member.name}
+                className="group relative overflow-hidden rounded-xl border border-gray-700 bg-gray-900 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20"
+              >
                 <CardContent className="flex flex-col items-center p-6">
-                  <Avatar className="h-24 w-24">
-                    {image && <AvatarImage src={image.imageUrl} alt={member.name} data-ai-hint={image.imageHint} />}
-                    <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <h3 className="mt-4 text-lg font-semibold">{member.name}</h3>
-                  <p className="text-sm text-primary">{member.role}</p>
+                  <div className="relative">
+                    <Avatar className="h-28 w-28 border-4 border-gray-800 transition-transform duration-300 group-hover:scale-105">
+                      {image && (
+                        <AvatarImage
+                          src={image.imageUrl}
+                          alt={member.name}
+                          data-ai-hint={image.imageHint}
+                        />
+                      )}
+                      <AvatarFallback className="bg-gray-700 text-white">
+                        {member.name.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 rounded-full bg-primary/30 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"></div>
+                  </div>
+
+                  <h3 className="mt-6 text-lg font-semibold text-white transition-colors group-hover:text-primary">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm text-gray-400">{member.role}</p>
                 </CardContent>
               </Card>
             );
           })}
         </div>
       </section>
+
+
 
       <section className="mt-16 grid gap-12 lg:grid-cols-2">
         <div>
@@ -87,7 +111,7 @@ export function AboutSection() {
           </div>
         </div>
         <div>
-          <h3 className="text-center text-3xl font-bold tracking-tight mb-8">Our Technology</h3>
+          <h3 className="text-center text-3xl font-bold tracking-tight mb-8">Our TechStack</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {techStack.map((tech) => (
               <div key={tech} className="rounded-full bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground">

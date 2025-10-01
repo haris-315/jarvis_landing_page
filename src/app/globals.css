@@ -30,13 +30,15 @@
     --chart-5: 27 87% 67%;
     --radius: 0.75rem;
 
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-gradient: linear-gradient(135deg, #888BF4 0%, #5151C6 100%);
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg: rgba(10, 10, 22, 0.5);
     --glass-border: rgba(255, 255, 255, 0.1);
     --text-primary: rgba(255, 255, 255, 0.9);
-    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --shadow-hover: 0 15px 35px 0 rgba(0, 0, 0, 0.4);
   }
  
   .dark {
