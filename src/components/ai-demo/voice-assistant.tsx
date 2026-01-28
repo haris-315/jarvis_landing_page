@@ -93,7 +93,7 @@ export function VoiceAssistant() {
       if (isLocal) {
         wsUrl = `ws://localhost:12000/agent/jarvis/ws?token=${token}`;
       } else {
-        wsUrl = `wss://assitant.trylenoxinstruments.com/agent/jarvis/ws?token=${token}`;
+        wsUrl = `wss://jarvis.linkedinwriter.io/agent/jarvis/ws?token=${token}`;
       }
 
       socket.current = new WebSocket(wsUrl);
