@@ -1,90 +1,129 @@
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export function HeroSection() {
-  const heroImages = PlaceHolderImages.filter(img => img.id.startsWith('hero-mockup'));
+const heroPhones = [
+  { id: 'phone-two', src: '/two.png', alt: 'Jarvis AI feature two' },
+  { id: 'phone-three', src: '/three.png', alt: 'Jarvis AI feature three' },
+  { id: 'phone-one', src: '/one.png', alt: 'Jarvis AI feature one' },
+];
 
+const phoneConfigs = [
+  { ...heroPhones[0], w: 240, h: 480, rotate: 'rotateY(18deg) rotateZ(-5deg)', opacity: 0.85, marginRight: '-60px', animClass: 'animate-float-slow', delay: '0ms', zIndex: 10 },
+  { ...heroPhones[2], w: 280, h: 560, rotate: 'rotateY(0deg)', opacity: 1, marginRight: '-60px', animClass: 'animate-float', delay: '250ms', zIndex: 20 },
+  { ...heroPhones[1], w: 240, h: 480, rotate: 'rotateY(-18deg) rotateZ(5deg)', opacity: 0.85, marginRight: '0', animClass: 'animate-float-slower', delay: '500ms', zIndex: 10 },
+];
+
+export function HeroSection() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-background to-blue-900/20 py-20">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 left-1/2 w-[800px] h-[800px] bg-gradient-to-b from-primary/20 to-transparent rounded-full blur-3xl transform -translate-x-1/2 animate-pulse" />
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-b from-blue-500/20 to-transparent rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-b from-primary/30 to-transparent rounded-full blur-3xl animate-float" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000,transparent)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background opacity-80" />
+    <section className="relative w-full min-h-screen overflow-hidden pt-20 pb-20 flex items-center"
+      style={{ background: 'hsl(230, 25%, 5%)' }}
+    >
+      {/* Background glows */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full blur-[120px] opacity-20"
+          style={{ background: 'radial-gradient(circle, #818cf8 0%, #6d28d9 50%, transparent 70%)' }}
+        />
+        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full blur-[100px] opacity-10 animate-pulse-slow"
+          style={{ background: 'radial-gradient(circle, #a78bfa 0%, transparent 70%)' }}
+        />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[100px] opacity-10 animate-pulse-slow"
+          style={{ background: 'radial-gradient(circle, #818cf8 0%, transparent 70%)' }}
+        />
+        <div className="absolute inset-0"
+          style={{
+            backgroundImage: 'linear-gradient(to right, rgba(129,140,248,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(129,140,248,0.04) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+          }}
+        />
       </div>
 
-      <div className="container relative z-10 mx-auto grid grid-cols-1 items-center gap-12 px-4 text-center lg:grid-cols-2 lg:text-left">
+      <div className="container relative z-10 grid grid-cols-1 items-center gap-20 px-4 md:px-6 text-center lg:grid-cols-2 lg:text-left">
+        {/* Left: Copy */}
         <div className="space-y-8">
-          <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm text-primary backdrop-blur-sm">
+          <div className="inline-flex items-center rounded-full border px-4 py-1.5 text-sm backdrop-blur-sm"
+            style={{ borderColor: 'rgba(129,140,248,0.3)', background: 'rgba(129,140,248,0.1)', color: '#a5b4fc' }}
+          >
             <span className="relative flex h-2 w-2 mr-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-indigo-400" />
             </span>
             New Features Available
           </div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-            Your Personal AI, Reimagined with{' '}
-            <span className="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">Jarvis</span>
+
+          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            Your Personal AI,{' '}
+            <span className="inline-block" style={{
+              background: 'linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #e879f9 100%)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            }}>
+              Reimagined
+            </span>{' '}
+            with Jarvis
           </h1>
-          <p className="mx-auto max-w-3xl text-lg text-muted-foreground sm:text-xl md:text-2xl lg:mx-0">
+
+          <p className="mx-auto max-w-xl text-lg lg:mx-0" style={{ color: 'rgba(255,255,255,0.55)' }}>
             From project management and real-time web access to voice chats, take full control of your tasks.
           </p>
+
           <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 justify-center lg:justify-start">
-            {/* <Button size="lg" asChild className="group bg-gradient-to-r from-primary to-blue-500 hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
-              <Link href="/ai-demo">
-                Try The AI <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button> */}
-            <Button size="lg" asChild variant="outline" className="group border-primary/20 hover:bg-primary/10 transition-all duration-300">
+            <Button size="lg" asChild className="group relative overflow-hidden border-0 text-white font-semibold transition-all duration-300"
+              style={{ background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', boxShadow: '0 0 30px rgba(99,102,241,0.4)' }}
+            >
               <Link href="#features">
                 Explore Features <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
+
+            <Button size="lg" asChild variant="outline" className="group transition-all duration-300"
+              style={{ borderColor: 'rgba(129,140,248,0.3)', background: 'rgba(129,140,248,0.05)', color: '#a5b4fc' }}
+            >
+              <Link href="/#contact">
+                Get in Touch <ArrowRight className="ml-2 h-5 w-5 opacity-70 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
           </div>
         </div>
-        <div className="relative h-[500px] lg:h-[700px] flex items-center justify-center">
-          {heroImages.map((image, index) => {
-            const transforms = [
-              'lg:translate-x-[-75%] lg:translate-y-[5%] lg:rotate-[-15deg] sm:translate-x-[-25%] sm:translate-y-[5%] sm:rotate-[-8deg]', // left phone
-              'lg:translate-x-[0%] lg:translate-y-[0%] sm:translate-x-[25%] sm:translate-y-[0%]', // center phone
-              'lg:translate-x-[75%] lg:translate-y-[5%] lg:rotate-[15deg] sm:translate-x-[75%] sm:translate-y-[5%] sm:rotate-[8deg]', // right phone
-            ];
-            const zIndexes = ['z-10', 'z-30', 'z-10'];
-            const opacities = ['opacity-60', 'opacity-100', 'opacity-60'];
-            const animations = [
-              'animate-float-slow',
-              'animate-float',
-              'animate-float-slower',
-            ];
 
-            return (
-              <div
-                key={image.id}
-                className={`absolute w-[280px] h-[560px] sm:w-[320px] sm:h-[640px] ${zIndexes[index]} ${opacities[index]} ${animations[index]} transition-all duration-700 ease-out transform ${transforms[index]}`}
-                style={{
-                  animationDelay: `${index * 250}ms`
-                }}
-              >
-                <div className="absolute inset-0">
-                  <Image
-                    src={image.imageUrl}
-                    alt={image.description}
-                    fill
-                    priority={index < 2}
-                    className="object-cover"
-                    data-ai-hint={image.imageHint}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                </div>
-              </div>
-            );
-          })}
+        
+        {/* Right: Images directly */}
+        <div 
+          className="flex items-center justify-center lg:justify-end overflow-visible lg:pr-4" 
+          style={{ perspective: '1100px' }}
+        >
+          {phoneConfigs.map((phone) => (
+            <div
+              key={phone.id}
+              className={`flex-shrink-0 ${phone.animClass}`}
+              style={{
+                width: phone.w,
+                height: phone.h,
+                marginRight: phone.marginRight,
+                animationDelay: phone.delay,
+                transform: phone.rotate,
+                opacity: phone.opacity,
+                zIndex: phone.zIndex,
+                transition: 'transform 0.6s ease',
+                position: 'relative',
+              }}
+            >
+              <Image
+                src={phone.src}
+                alt={phone.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 180px, 290px"
+              />
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        style={{ background: 'linear-gradient(to top, hsl(230,25%,5%), transparent)' }}
+      />
     </section>
   );
 }
