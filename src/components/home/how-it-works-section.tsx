@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from '@/components/ui/card';
-import { Mail, MessageCircle, Mic, Star, Zap } from 'lucide-react';
+import { Mail, MessageCircle, Mic, Star, Zap, Calendar } from 'lucide-react';
 import { useState } from 'react';
 
 const steps = [
@@ -34,6 +34,12 @@ const steps = [
     title: 'Stay Organized',
     description:
       'Everything—summaries, chats, transcripts—is neatly categorized and fully searchable. No more digging through endless messages. Your workspace stays clean, clear, and under control.',
+  },
+  {
+    icon: <Calendar className="h-10 w-10" />,
+    title: 'Sync Microsoft Calendar',
+    description:
+      'Seamlessly integrate your Microsoft Calendar to manage appointments, set reminders, and stay on top of your schedule with AI-powered insights.',
   },
 ];
 
@@ -72,31 +78,43 @@ export function HowItWorksSection() {
           </p>
         </div>
 
-        <div className="space-y-10 relative">
-          {steps.map((step, index) => (
-            <div
-              key={step.title}
-              className="relative flex items-start gap-6"
-              onMouseEnter={() => setHovered(index)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              {/* Connector line */}
-              {index !== steps.length - 1 && (
-                <div className="absolute left-6 top-14 bottom-0 w-px bg-primary/30" />
-              )}
+        <div className="relative">
+          {/* Vertical lines */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 -translate-x-1/2" />
+          <div className="md:hidden absolute left-7 top-0 bottom-0 w-0.5 bg-primary/30" />
 
-              {/* Icon */}
-              <div className="flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-md">
-                {step.icon}
+          <div className="space-y-12 md:space-y-0">
+            {steps.map((step, index) => (
+              <div
+                key={step.title}
+                className={`relative flex flex-col md:flex-row items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''
+                  } md:py-16 group`}
+                onMouseEnter={() => setHovered(index)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                {/* Content Side */}
+                <div className={`w-full md:w-1/2 flex ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'} px-4 md:px-16`}>
+                  <Card className="w-full max-w-lg p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1 border-primary/10 bg-card/50 backdrop-blur-sm">
+                    <div className="md:hidden mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg">
+                      {step.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2 transition-colors group-hover:text-primary">
+                      {step.title}
+                    </h3>
+                    <AnimatedDescription text={step.description} active={hovered === index} />
+                  </Card>
+                </div>
+
+                {/* Center Icon (Desktop only) */}
+                <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl border-4 border-background transition-all duration-300 group-hover:scale-110 group-hover:shadow-primary/20">
+                  {step.icon}
+                </div>
+
+                {/* Empty Side (Desktop only) */}
+                <div className="hidden md:block md:w-1/2" />
               </div>
-
-              {/* Step content */}
-              <Card className="flex-1 p-8">
-                <h3 className="text-2xl font-semibold">{step.title}</h3>
-                <AnimatedDescription text={step.description} active={hovered === index} />
-              </Card>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
